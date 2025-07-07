@@ -24,7 +24,7 @@
     <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
     <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
     rel="stylesheet">
@@ -330,9 +330,9 @@
       <div class="flex justify-center">
         <div class="w-full">
           
-          <div class="aspect-w-16 aspect-h-9">
+          <div class="relative overflow-hidden rounded-lg shadow-lg aspect-w-16 aspect-h-9">
             <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/ZUh8Q3dkMes" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full rounded-lg shadow-lg"></iframe>
+            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/ZUh8Q3dkMes" title="Getting to know Gabriel & Participate in Turing Test" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
       </div>
