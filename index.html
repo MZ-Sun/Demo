@@ -41,6 +41,7 @@
     <script defer src="static/js/fontawesome.all.min.js"></script>
     <script src="static/js/bulma-carousel.min.js"></script>
     <script src="static/js/bulma-slider.min.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="static/js/index.js"></script>
 
     <style>
@@ -49,11 +50,13 @@
         }
         .video-background {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* 100/56.25 = 1.777 -> 16:9 aspect ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 100 * 16 / 9 */
+            transform: translate(-50%, -50%);
             z-index: -1;
         }
         .hero-section {
@@ -90,10 +93,7 @@
         <div id="introOverlay" class="fixed inset-0 flex items-center justify-center bg-black z-30 transition-opacity duration-700" style="font-family: 'Inter', sans-serif;">
             <div id="introText" class="text-5xl md:text-7xl font-extrabold text-white text-center tracking-wide"></div>
         </div>
-        <video id="heroVideo" class="video-background" autoplay loop muted playsinline style="object-fit:cover;">
-            <source src="PNAS_compressed.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <iframe id="heroVideo" src="https://player.vimeo.com/video/1099444674?background=1&autoplay=1&loop=1&muted=1" class="video-background" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         <!-- Custom Controls -->
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-4 z-20">
             <button id="muteBtn" class="bg-black/80 hover:bg-black/90 shadow-lg text-white rounded-full p-3 focus:outline-none flex items-center justify-center transition">
@@ -110,20 +110,23 @@
             </button>
         </div>
         <script>
-            const video = document.getElementById('heroVideo');
+            const iframe = document.getElementById('heroVideo');
+            const player = new Vimeo.Player(iframe);
+
             const muteBtn = document.getElementById('muteBtn');
             const muteIcon = document.getElementById('muteIcon');
             const fullscreenBtn = document.getElementById('fullscreenBtn');
-            const fullscreenIcon = document.getElementById('fullscreenIcon');
+
             // Animated Intro Overlay
             const introOverlay = document.getElementById('introOverlay');
             const introText = document.getElementById('introText');
             const introWords = ['The', 'Other', 'You', 'in', 'Black', 'Mirror'];
             let introIndex = 0;
-            video.pause();
+
+            player.pause();
+
             function showNextWord() {
                 if (introIndex < introWords.length) {
-                    // Add word with a span for animation
                     const wordSpan = document.createElement('span');
                     wordSpan.textContent = introWords[introIndex] + ' ';
                     wordSpan.style.opacity = 0;
@@ -139,30 +142,34 @@
                         introOverlay.style.opacity = 0;
                         setTimeout(() => {
                             introOverlay.style.display = 'none';
-                            //video.muted = false; // Optionally unmute
-                            video.play();
+                            player.play();
                         }, 700); // Match transition duration
                     }, 400);
                 }
             }
-            // Start animation on DOMContentLoaded
+
             document.addEventListener('DOMContentLoaded', () => {
                 introOverlay.style.opacity = 1;
                 introText.innerHTML = '';
                 introIndex = 0;
                 showNextWord();
             });
-            function updateMuteIcon() {
-                muteIcon.innerHTML = video.muted
+
+            async function updateMuteIcon() {
+                const muted = await player.getMuted();
+                muteIcon.innerHTML = muted
                     // Speaker with slash (muted)
                     ? `<path d='M16.5 12c0-1.77-.77-3.29-2-4.3V5c0-.55-.45-1-1-1s-1 .45-1 1v2.7L7.71 4.21a.996.996 0 10-1.41 1.41l15.09 15.09a.996.996 0 101.41-1.41l-2.79-2.79C20.23 15.29 21 13.77 21 12h-2.5zm-2.5 2.5l-1.5-1.5V19l-5-5H3v-4h4l5-5v6.5l-1.5-1.5V12c0 1.1.9 2 2 2h.5z' />`
                     // Speaker (unmuted)
                     : `<path d='M3 9v6h4l5 5V4L7 9H3z' />`;
             }
-            muteBtn.addEventListener('click', () => {
-                video.muted = !video.muted;
+
+            muteBtn.addEventListener('click', async () => {
+                const muted = await player.getMuted();
+                await player.setMuted(!muted);
                 updateMuteIcon();
             });
+
             fullscreenBtn.addEventListener('click', () => {
                 if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
                     // Exit fullscreen
@@ -175,17 +182,16 @@
                     }
                 } else {
                     // Enter fullscreen
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    } else if (video.msRequestFullscreen) {
-                        video.msRequestFullscreen();
-                    }
+                    player.requestFullscreen().catch(err => {
+                        console.error("Fullscreen request failed. This can happen if not triggered by a direct user interaction.", err);
+                    });
                 }
             });
+
             // Update icon on load
-            updateMuteIcon();
+            player.ready().then(() => {
+                updateMuteIcon();
+            });
         </script>
     </section>
 
