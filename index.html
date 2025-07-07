@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Government Style Website</title>
+    <title>The Other You in Black Mirror </title>
+
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <meta name="description" content="DESCRIPTION META TAG">
+    <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+    <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+    <meta property="og:url" content="URL OF THE WEBSITE"/>
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <meta property="og:image" content="static/image/your_banner_image.png" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+    <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+    <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Keywords for your paper to be indexed by-->
+    <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+    rel="stylesheet">
+  
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -39,12 +76,6 @@
             <div class="text-2xl font-bold text-white">
                 <a href="#">The Other You in Black Mirror</a>
             </div>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-200 hover:text-white font-medium">Home</a>
-                <a href="#" class="text-gray-200 hover:text-white font-medium">About</a>
-                <a href="#" class="text-gray-200 hover:text-white font-medium">Priorities</a>
-                <a href="#" class="text-gray-200 hover:text-white font-medium">Contact</a>
-            </nav>
             <button class="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -60,7 +91,7 @@
             <div id="introText" class="text-5xl md:text-7xl font-extrabold text-white text-center tracking-wide"></div>
         </div>
         <video id="heroVideo" class="video-background" autoplay loop muted playsinline style="object-fit:cover;">
-            <source src="PNAS.mp4" type="video/mp4">
+            <source src="PNAS_compressed.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <!-- Custom Controls -->
@@ -158,65 +189,257 @@
         </script>
     </section>
 
-    <!-- Main Content Section: Academic Project Page Style -->
-    <main class="container mx-auto py-16 px-4 max-w-4xl">
-        <!-- Teaser Image -->
-        <div class="mb-10 flex justify-center">
-            <img src="static/images/teaser.png" alt="Teaser" class="rounded-lg shadow-lg max-h-96 object-contain">
-        </div>
-        <!-- Title and Authors -->
-        <section class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Project Title: The Other You in Black Mirror</h1>
-            <div class="text-lg text-gray-700 mb-2">Jane Doe<sup>1</sup>, John Smith<sup>2</sup>, Alice Lee<sup>1</sup></div>
-            <div class="text-gray-500 text-sm mb-2">1. University of Example &nbsp; 2. Institute of Demo</div>
-            <div class="flex justify-center space-x-4 mt-2">
-                <a href="#" class="text-blue-600 hover:underline">Paper PDF</a>
-                <a href="#" class="text-blue-600 hover:underline">Supplementary</a>
-                <a href="#" class="text-blue-600 hover:underline">Project Code</a>
-            </div>
-        </section>
-        <!-- Abstract -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-2">Abstract</h2>
-            <p class="text-gray-700">This is a placeholder abstract. Replace this with a summary of your paper, describing the main contributions, methods, and results. The abstract should be concise and informative, giving readers a quick overview of your work.</p>
-        </section>
-        <!-- Image Carousel -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-4">Image Carousel</h2>
-            <div class="flex space-x-4 overflow-x-auto pb-2">
-                <img src="static/images/carousel1.png" alt="Carousel 1" class="h-48 rounded shadow">
-                <img src="static/images/carousel2.png" alt="Carousel 2" class="h-48 rounded shadow">
-                <img src="static/images/carousel3.png" alt="Carousel 3" class="h-48 rounded shadow">
-            </div>
-        </section>
-        <!-- BibTeX Citation -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-4">BibTeX Citation</h2>
-            <pre class="bg-gray-100 rounded p-4 overflow-x-auto text-sm text-gray-800">@inproceedings{doe2024other,
-  title={The Other You in Black Mirror},
-  author={Doe, Jane and Smith, John and Lee, Alice},
-  booktitle={Proceedings of the Example Conference},
-  year={2024}
-}</pre>
-        </section>
-        <!-- Acknowledgments -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-4">Acknowledgments</h2>
-            <p class="text-gray-700">We thank the Academic Project Page Template by <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" class="text-blue-600 hover:underline">Eliahu Horwitz</a> for inspiration. This work was supported by Example Grant #1234.</p>
-        </section>
-    </main>
+    <section class="py-12 bg-white">
+      <div class="container mx-auto max-w-4xl px-4">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-4">The Other You in Black Mirror </h1>
+          <div class="text-lg text-gray-700 mb-2">
+            <!-- Paper authors -->
+            <span class="inline-block">
+              <a href="FIRST AUTHOR PERSONAL LINK" target="_blank" class="text-blue-600 hover:underline">Mingzhong Sun</a><sup>1</sup>,</span>
+            <span class="inline-block">
+              <a href="https://spandan-madan.github.io/about/" target="_blank" class="text-blue-600 hover:underline">Spanda Madan</a><sup>2</sup>,</span>
+            <span class="inline-block">
+              <a href="https://kempnerinstitute.harvard.edu/people/our-people/dianna-hidalgo/" target="_blank" class="text-blue-600 hover:underline">Dianna Hidalgo</a><sup>2</sup>,</span>
+            <span class="inline-block">
+              <a href="https://a0091624.wixsite.com/deepneurocognition-1" target="_blank" class="text-blue-600 hover:underline">Mengmi Zhang</a><sup>†,1</sup>,</span>
+            <span class="inline-block">
+              <a href="https://klab.tch.harvard.edu//index.html" target="_blank" class="text-blue-600 hover:underline">Gabriel Kreiman</a><sup>‡,2</sup>
+            </span>
+          </div>
 
-    <!-- Footer -->
+          <div class="text-gray-500 text-sm mb-4">
+            <span class="inline-block"><sup>1</sup>Nanyang Technological University, <sup>2</sup>Harvard University</span>
+          </div>
+
+          <div class="flex justify-center flex-wrap gap-4">
+            <!-- Arxiv PDF link -->
+            <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+              <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 3a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V3zm2-1a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1H5z" clip-rule="evenodd" />
+                <path d="M6 7a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h4a1 1 0 100-2H7z" />
+              </svg>
+              <span>Paper</span>
+            </a>
+            <!-- Supplementary PDF link -->
+            <a href="static/pdfs/supplementary_material.pdf" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+              <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                 <path fill-rule="evenodd" d="M3 3a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V3zm2-1a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1H5z" clip-rule="evenodd" />
+                 <path d="M6 7a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h4a1 1 0 100-2H7z" />
+               </svg>
+              <span>Supplementary</span>
+            </a>
+            <!-- Github link -->
+            <a href="https://github.com/YOUR REPO HERE" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+                <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 5.424c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.397.1 2.65.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0020 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                </svg>
+              <span>Code</span>
+            </a>
+            <!-- Turing Test Link -->
+            <a href="https://illinois.qualtrics.com/jfe/form/SV_blnk5P6wRHUm5ng" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+                 <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM1.49 15.326a.78.78 0 01-.358-.442 3 3 0 014.308-3.516 6.484 6.484 0 00-1.905 3.959c-.023.222-.014.442.028.658a4 4 0 11-2.078-4.282 3 3 0 01-1.232 4.243zM18.51 15.326a.78.78 0 01-.358-.442 3 3 0 014.308-3.516 6.484 6.484 0 00-1.905 3.959c-.023.222-.014.442.028.658a4 4 0 11-2.078-4.282 3 3 0 01-1.232 4.243zM14 8a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              <span>Turing Test</span>
+            </a>
+          </div>
+        </div>
+      </div>
+  </section>
+  
+  
+  <!-- Paper abstract -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto max-w-4xl px-4">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold mb-4">Abstract</h2>
+        <div class="text-left text-gray-700 leading-relaxed">
+          <p>
+            Large language models (LLMs) have demonstrated remarkable abilities in a wide
+  variety of generic tasks. Here we investigate whether it is possible to use LLMs
+  to partially replicate cognitive aspects of an individual by fine-tuning an LLM
+  with personal data. Our model, A-clone, built on the pretrained Llama-3-70B,
+  was fine-tuned with a private English dataset from one volunteer referred to as
+  A throughout. We evaluated A-clone in two ways. First, using 701 open-ended
+  questions, we gathered responses from A, A-clone, other LLMs, and A's family
+  members imitating A. We conducted a Turing-like test where 31 participants with
+  varying degrees of familiarity with A attempted to identify A's real answers in a
+  question-and-answer task. Human participants identified the genuine responses
+  from A 55% ± 7% of the time, just over chance levels. A-clone outperformed all
+  other baselines in mimicking adequate responses from A. Second, we compared the
+  outputs of A-Clone with the ground truth from A in 10 psychological, moral, career,
+  political tendency, and general knowledge tests, containing 484 questions altogether.
+  A-Clone demonstrated a strong correlation with A's responses. This work provides
+  an initial, proof-of-principle, evaluation of the possibility of mimicking the
+  responses of an individual, opening doors to many real-world applications but
+  also raising potential privacy and safety concerns about digital clones. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+  
+  
+  <!-- Image carousel -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/Turing_part2_all.png" alt="MY ALT TEXT" class="w-full h-auto rounded-lg shadow-lg"/>
+        <h2 class="text-center text-lg text-gray-600 mt-2">
+          First image description.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/Turing_part2_violin.png" alt="MY ALT TEXT" class="w-full h-auto rounded-lg shadow-lg"/>
+        <h2 class="text-center text-lg text-gray-600 mt-2">
+          Second image description.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/wordcloud2.png" alt="MY ALT TEXT" class="w-full h-auto rounded-lg shadow-lg"/>
+        <h2 class="text-center text-lg text-gray-600 mt-2">
+         Third image description.
+       </h2>
+     </div>
+     <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT" class="w-full h-auto rounded-lg shadow-lg"/>
+      <h2 class="text-center text-lg text-gray-600 mt-2">
+        Fourth image description.
+      </h2>
+    </div>
+  </div>
+</div>
+</section>
+  <!-- End image carousel -->
+  
+  
+  
+  
+  <!-- Youtube video -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto max-w-7xl px-4">
+      <!-- Paper video. -->
+      <h2 class="text-3xl font-bold text-center mb-6">Getting to know Gabriel && Participate in Turing Test</h2>
+      <div class="flex justify-center">
+        <div class="w-full">
+          
+          <div class="aspect-w-16 aspect-h-9">
+            <!-- Youtube embed code here -->
+            <iframe src="https://www.youtube.com/embed/ZUh8Q3dkMes" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full rounded-lg shadow-lg"></iframe>
+          </div>
+        </div>
+      </div>
+            </div>
+        </section>
+  <!-- End youtube video -->
+  
+  <!-- Turing Test single image -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto max-w-4xl px-4">
+      <div class="text-center">
+        <img src="static/images/GK Test.png" alt="MY ALT TEXT" class="mx-auto rounded-lg shadow-lg"/>
+        <span class="block mt-4">
+          <a href="https://illinois.qualtrics.com/jfe/form/SV_blnk5P6wRHUm5ng" target="_blank" class="text-xl text-blue-600 hover:underline font-semibold">
+            Turing Test: Can you distinguish Gabriel from Large Language Models?
+          </a>
+        </span>
+        
+      </div>
+    </div>
+        </section>
+  <!-- End Turing Test single image -->
+  
+  <!-- Video carousel -->
+  
+  
+  <!--
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-3">Another Carousel</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-video1">
+            <video poster="" id="video1" autoplay controls muted loop height="100%">
+              
+              <source src="static/videos/carousel1.mp4"
+              type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video2">
+            <video poster="" id="video2" autoplay controls muted loop height="100%">
+              
+              <source src="static/videos/carousel2.mp4"
+              type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-video3">
+            <video poster="" id="video3" autoplay controls muted loop height="100%">\
+              
+              <source src="static/videos/carousel3.mp4"
+              type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+            </div>
+        </section>
+  -->
+  
+  
+  
+  
+  
+  
+  <!-- Paper poster -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto max-w-4xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-6">Paper</h2>
+  
+        <iframe  src="static/pdfs/iclr.pdf" width="100%" height="550" class="rounded-lg shadow-lg">
+            </iframe>
+          
+        </div>
+        </section>
+  <!--End paper poster -->
+  
+  
+  <!--BibTex citation -->
+    <section class="py-12 bg-white" id="BibTeX">
+      <div class="container mx-auto max-w-4xl px-4">
+        <h2 class="text-3xl font-bold mb-4">BibTeX</h2>
+        <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>BibTex Code Here</code></pre>
+      </div>
+        </section>
+  <!--End BibTex citation -->
+  
+
     <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Your Administration. All Rights Reserved.</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <a href="#" class="hover:text-gray-400">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-400">Terms of Service</a>
-                <a href="#" class="hover:text-gray-400">Contact Us</a>
+    <div class="container mx-auto text-center px-4">
+      <div class="max-w-4xl mx-auto">
+  
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" class="text-blue-400 hover:underline">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" class="text-blue-400 hover:underline">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="text-blue-400 hover:underline">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+  
+          </div>
             </div>
         </div>
     </footer>
+  
+  <!-- Statcounter tracking code -->
+    
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+  
+      <!-- End of Statcounter Code -->
 
 </body>
 </html>
