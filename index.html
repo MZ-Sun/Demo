@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Government Style Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-10 p-4 bg-white/80 backdrop-blur-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <a href="#">Your Logo</a>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Home</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">About</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Priorities</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+            </nav>
+            <button class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video -->
+    <section class="hero-section">
+        <video autoplay muted loop class="video-background">
+            <!-- You can replace this with your own video file -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-white-sand-beach-with-people-resting-4219-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="bg-black/50 absolute inset-0"></div>
+        <div class="relative z-10 p-8 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">A New Vision for the Future</h1>
+            <p class="text-lg md:text-xl lg:text-2xl font-light text-gray-200">Working together to build a stronger, more prosperous nation for all.</p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="container mx-auto py-16 px-4">
+        <section class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Priorities</h2>
+            <p class="max-w-3xl mx-auto text-gray-600">We are focused on the issues that matter most to American families. From strengthening the economy to ensuring access to quality healthcare, we are committed to delivering results.</p>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Priority Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=Economy" alt="Economic growth" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Economic Growth</h3>
+                    <p class="text-gray-600">Creating jobs and opportunities for everyone through smart investments and fair policies.</p>
+                </div>
+            </div>
+            <!-- Priority Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                <img src="https://placehold.co/600x400/D1D5DB/4A5568?text=Healthcare" alt="Healthcare" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Affordable Healthcare</h3>
+                    <p class="text-gray-600">Ensuring every citizen has access to high-quality, affordable medical care and services.</p>
+                </div>
+            </div>
+            <!-- Priority Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                <img src="https://placehold.co/600x400/9CA3AF/4A5568?text=Climate" alt="Climate action" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Climate Action</h3>
+                    <p class="text-gray-600">Taking bold steps to protect our planet for future generations and build a clean energy economy.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Your Administration. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-400">Terms of Service</a>
+                <a href="#" class="hover:text-gray-400">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
