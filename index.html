@@ -34,18 +34,18 @@
 <body class="bg-gray-100">
 
     <!-- Header -->
-    <header class="absolute top-0 left-0 right-0 z-10 p-4 bg-white/80 backdrop-blur-md">
+    <header class="absolute top-0 left-0 right-0 z-10 p-4 bg-black/90 backdrop-blur-md">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">
-                <a href="#">Your Logo</a>
+            <div class="text-2xl font-bold text-white">
+                <a href="#">The Other You in Black Mirror</a>
             </div>
             <nav class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Home</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">About</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Priorities</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
+                <a href="#" class="text-gray-200 hover:text-white font-medium">Home</a>
+                <a href="#" class="text-gray-200 hover:text-white font-medium">About</a>
+                <a href="#" class="text-gray-200 hover:text-white font-medium">Priorities</a>
+                <a href="#" class="text-gray-200 hover:text-white font-medium">Contact</a>
             </nav>
-            <button class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-200">
+            <button class="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
@@ -55,50 +55,154 @@
 
     <!-- Hero Section with Video -->
     <section class="hero-section">
-        <video autoplay muted loop class="video-background">
-            <!-- You can replace this with your own video file -->
-            <source src="https://drive.google.com/uc?export=preview&id=1XNQXxT5eVCdqxBB2BlUn79_NOYbLpwhr" type="video/mp4">
+        <!-- Animated Intro Overlay -->
+        <div id="introOverlay" class="fixed inset-0 flex items-center justify-center bg-black z-30 transition-opacity duration-700" style="font-family: 'Inter', sans-serif;">
+            <div id="introText" class="text-5xl md:text-7xl font-extrabold text-white text-center tracking-wide"></div>
+        </div>
+        <video id="heroVideo" class="video-background" autoplay loop muted playsinline style="object-fit:cover;">
+            <source src="PNAS.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="bg-black/50 absolute inset-0"></div>
-        <div class="relative z-10 p-8 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">A New Vision for the Future</h1>
-            <p class="text-lg md:text-xl lg:text-2xl font-light text-gray-200">Working together to build a stronger, more prosperous nation for all.</p>
+        <!-- Custom Controls -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-4 z-20">
+            <button id="muteBtn" class="bg-black/80 hover:bg-black/90 shadow-lg text-white rounded-full p-3 focus:outline-none flex items-center justify-center transition">
+                <svg id="muteIcon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                    <!-- Default: Speaker (unmuted) -->
+                    <path d="M3 9v6h4l5 5V4L7 9H3z" />
+                </svg>
+            </button>
+            <button id="fullscreenBtn" class="bg-black/80 hover:bg-black/90 shadow-lg text-white rounded-full p-3 focus:outline-none flex items-center justify-center transition">
+                <svg id="fullscreenIcon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+                    <!-- Four corners (enter fullscreen) -->
+                    <path d="M7 14H5v5h5v-2H7v-3zm0-4h2V7h3V5H7v5zm10 7h-3v2h5v-5h-2v3zm0-12h-5v2h3v3h2V5z" />
+                </svg>
+            </button>
         </div>
+        <script>
+            const video = document.getElementById('heroVideo');
+            const muteBtn = document.getElementById('muteBtn');
+            const muteIcon = document.getElementById('muteIcon');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const fullscreenIcon = document.getElementById('fullscreenIcon');
+            // Animated Intro Overlay
+            const introOverlay = document.getElementById('introOverlay');
+            const introText = document.getElementById('introText');
+            const introWords = ['The', 'Other', 'You', 'in', 'Black', 'Mirror'];
+            let introIndex = 0;
+            video.pause();
+            function showNextWord() {
+                if (introIndex < introWords.length) {
+                    // Add word with a span for animation
+                    const wordSpan = document.createElement('span');
+                    wordSpan.textContent = introWords[introIndex] + ' ';
+                    wordSpan.style.opacity = 0;
+                    wordSpan.style.transition = 'opacity 0.1s';
+                    introText.appendChild(wordSpan);
+                    setTimeout(() => {
+                        wordSpan.style.opacity = 1;
+                    }, 30);
+                    introIndex++;
+                    setTimeout(showNextWord, 220); // Faster delay between words
+                } else {
+                    setTimeout(() => {
+                        introOverlay.style.opacity = 0;
+                        setTimeout(() => {
+                            introOverlay.style.display = 'none';
+                            //video.muted = false; // Optionally unmute
+                            video.play();
+                        }, 700); // Match transition duration
+                    }, 400);
+                }
+            }
+            // Start animation on DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', () => {
+                introOverlay.style.opacity = 1;
+                introText.innerHTML = '';
+                introIndex = 0;
+                showNextWord();
+            });
+            function updateMuteIcon() {
+                muteIcon.innerHTML = video.muted
+                    // Speaker with slash (muted)
+                    ? `<path d='M16.5 12c0-1.77-.77-3.29-2-4.3V5c0-.55-.45-1-1-1s-1 .45-1 1v2.7L7.71 4.21a.996.996 0 10-1.41 1.41l15.09 15.09a.996.996 0 101.41-1.41l-2.79-2.79C20.23 15.29 21 13.77 21 12h-2.5zm-2.5 2.5l-1.5-1.5V19l-5-5H3v-4h4l5-5v6.5l-1.5-1.5V12c0 1.1.9 2 2 2h.5z' />`
+                    // Speaker (unmuted)
+                    : `<path d='M3 9v6h4l5 5V4L7 9H3z' />`;
+            }
+            muteBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                updateMuteIcon();
+            });
+            fullscreenBtn.addEventListener('click', () => {
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                    // Exit fullscreen
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                } else {
+                    // Enter fullscreen
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                }
+            });
+            // Update icon on load
+            updateMuteIcon();
+        </script>
     </section>
 
-    <!-- Main Content Section -->
-    <main class="container mx-auto py-16 px-4">
-        <section class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Priorities</h2>
-            <p class="max-w-3xl mx-auto text-gray-600">We are focused on the issues that matter most to American families. From strengthening the economy to ensuring access to quality healthcare, we are committed to delivering results.</p>
+    <!-- Main Content Section: Academic Project Page Style -->
+    <main class="container mx-auto py-16 px-4 max-w-4xl">
+        <!-- Teaser Image -->
+        <div class="mb-10 flex justify-center">
+            <img src="static/images/teaser.png" alt="Teaser" class="rounded-lg shadow-lg max-h-96 object-contain">
+        </div>
+        <!-- Title and Authors -->
+        <section class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Project Title: The Other You in Black Mirror</h1>
+            <div class="text-lg text-gray-700 mb-2">Jane Doe<sup>1</sup>, John Smith<sup>2</sup>, Alice Lee<sup>1</sup></div>
+            <div class="text-gray-500 text-sm mb-2">1. University of Example &nbsp; 2. Institute of Demo</div>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="text-blue-600 hover:underline">Paper PDF</a>
+                <a href="#" class="text-blue-600 hover:underline">Supplementary</a>
+                <a href="#" class="text-blue-600 hover:underline">Project Code</a>
+            </div>
         </section>
-
-        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Priority Card 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/E2E8F0/4A5568?text=Economy" alt="Economic growth" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Economic Growth</h3>
-                    <p class="text-gray-600">Creating jobs and opportunities for everyone through smart investments and fair policies.</p>
-                </div>
+        <!-- Abstract -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-2">Abstract</h2>
+            <p class="text-gray-700">This is a placeholder abstract. Replace this with a summary of your paper, describing the main contributions, methods, and results. The abstract should be concise and informative, giving readers a quick overview of your work.</p>
+        </section>
+        <!-- Image Carousel -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Image Carousel</h2>
+            <div class="flex space-x-4 overflow-x-auto pb-2">
+                <img src="static/images/carousel1.png" alt="Carousel 1" class="h-48 rounded shadow">
+                <img src="static/images/carousel2.png" alt="Carousel 2" class="h-48 rounded shadow">
+                <img src="static/images/carousel3.png" alt="Carousel 3" class="h-48 rounded shadow">
             </div>
-            <!-- Priority Card 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/D1D5DB/4A5568?text=Healthcare" alt="Healthcare" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Affordable Healthcare</h3>
-                    <p class="text-gray-600">Ensuring every citizen has access to high-quality, affordable medical care and services.</p>
-                </div>
-            </div>
-            <!-- Priority Card 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
-                <img src="https://placehold.co/600x400/9CA3AF/4A5568?text=Climate" alt="Climate action" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Climate Action</h3>
-                    <p class="text-gray-600">Taking bold steps to protect our planet for future generations and build a clean energy economy.</p>
-                </div>
-            </div>
+        </section>
+        <!-- BibTeX Citation -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">BibTeX Citation</h2>
+            <pre class="bg-gray-100 rounded p-4 overflow-x-auto text-sm text-gray-800">@inproceedings{doe2024other,
+  title={The Other You in Black Mirror},
+  author={Doe, Jane and Smith, John and Lee, Alice},
+  booktitle={Proceedings of the Example Conference},
+  year={2024}
+}</pre>
+        </section>
+        <!-- Acknowledgments -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">Acknowledgments</h2>
+            <p class="text-gray-700">We thank the Academic Project Page Template by <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" class="text-blue-600 hover:underline">Eliahu Horwitz</a> for inspiration. This work was supported by Example Grant #1234.</p>
         </section>
     </main>
 
