@@ -57,7 +57,7 @@
             min-height: 100vh;
             min-width: 177.77vh; /* 100 * 16 / 9 */
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: 1;
         }
         .hero-section {
             position: relative;
@@ -88,7 +88,7 @@
     </header>
 
     <!-- Hero Section with Video -->
-    <section class="hero-section">
+    <section class="hero-section bg-black">
         <!-- Animated Intro Overlay -->
         <div id="introOverlay" class="fixed inset-0 flex items-center justify-center bg-black z-30 transition-opacity duration-700" style="font-family: 'Inter', sans-serif;">
             <div id="introText" class="text-5xl md:text-7xl font-extrabold text-white text-center tracking-wide"></div>
